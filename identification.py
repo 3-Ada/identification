@@ -295,3 +295,5 @@ clear.grid(row=7, columnspan=26, padx=20, pady=5)
 
 
 key.mainloop()  # using ending point
+
+
