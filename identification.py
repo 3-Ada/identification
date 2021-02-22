@@ -18,9 +18,8 @@ key.geometry('700x325')  # normal size
 key.configure(bg='#FFA07A')  # add background color
 key.title("Identification")
 
-# key.iconbitmap('add icon link And Directory name')    # icon add
 
-# function coding start 
+
 password = ""  # global variable
 # showing all data in display
 speed_print = 0
@@ -29,6 +28,7 @@ count_but = 0
 start_time = 0
 number_input = 0
 
+#function press button on keyboard
 def press(num):
     global start_time
     global count_but
@@ -63,6 +63,7 @@ def press(num):
         connection.commit()
         count_but += 1
 # end
+
 # function clear button
 
 def clear():
@@ -72,7 +73,7 @@ def clear():
 # end
 
 
-
+#function press Enter on keyboard
 def action(cursor):
     global start_time
     global password
@@ -179,6 +180,8 @@ def action(cursor):
                 sel_stdev = cursor.fetchall()
                 cursor.execute(sel_numder)
                 sel_numder = cursor.fetchall()
+                
+                #Student's t-test
                 t = (avg[0][0] - avg2[0][0])/((((sel_stdev[0][0]**2)/n[0][0])+(sel_stdev2[0][0]**2)/n[0][0])**0.5)
                 f = sel_stdev[0][0]**2/sel_stdev2[0][0]**2
 
@@ -209,7 +212,7 @@ def action(cursor):
                    str((5-number_input[0][0])) + ' разів'
             result = messagebox.showinfo('Увага!', info)
         else:
-            if (input / len(password) > 0.6) or (f > 2) or (t_s > 2.9) or (f_s > 161) or (t_t > 2.9) or (f_t > 161):
+            if (input / len(password) > 0.6) or (f > 2) or (t_s > 2.9) or (f_s > 161) or (t_t > 2.9) or (f_t > 161):  #Student's t-test
                 result = messagebox.showerror('Увага!', 'Несанкціонований доступ!')
             else:
                 result = messagebox.showinfo('Вітаємо!', 'Ви увійшли до системи')
